@@ -1,0 +1,31 @@
+\label{ch:Methodology}
+\textit{The following chapter will describe the methodology for the design process as a whole, rationale for design and method choices, type of research, tools and materials used for the research, as well as data collection, validation and analysis.}
+
+\section{Main Design Process}
+Firstly, the intended research field was further investigated to get a deeper understanding of the dynamic properties of the controlled objectives. Subsequently, an energy optimization oriented dynamic model was developed and implemented as an interactive controllable environment. Thereafter, the two controllers which followed two different developing principles, namely data driven and model based design were developed, implemented and tested. \newline
+
+\section{Comparison of Control Strategies}
+The comparison of the two controllers', as well as the different clustering methods', performance was done as a strictly quantitative study. By conducting model in the loop (MIL) experiments, the performance of the controllers were evaluated based on three indicators. These consisted of the total consumed energy [J], the total amount of data received by sink, and the average energy consumption proportional to data aggregated [bit/J].\newline
+
+\noindent Precautions concerning the validity of the results were taken in order to compare the systems under as equivalent circumstances as possible for the different technical indexes.\newline
+
+\noindent For measuring the efficiency of data aggregated to the sink in relation to energy consumed for each round, identical coordinates for each WSN node was used among the tested systems. The systems were also made to generate an identical set of CHs for each round. The systems were then observed until the first power failure of any node among the test subjects, since the systems will not be fully comparable anymore once this occurs.\newline
+
+\noindent When comparing only the amount of data aggregated to the sink by the controllers, the systems were observed until power failure for all nodes. Identical coordinates for each WSN node were used. However, identical CH role sortings for each consecutive round could not deployed since the systems were to be observed at times where differing amounts of WSN nodes are alive. Therefore, multiple results for each test case were gathered to derive a statistical mean in order to compare the systems.\newline
+
+\noindent The performance of both clustering methods were compared in terms of data packets aggregated to the sink and data packages sent per energy unit. This was done with a stationary sink with identical coordinates for each node as well as identical $p$ values, see \cite{heinzelman2000energy}.\newline
+
+\section{Research Tools and Materials}
+The thesis work experiments were executed by conducting simulations in a Python-based test environment, see Appendix \textcolor{red}{[ADD REFERENCE TO APPENDIX]}. Matlab was also used for visualizing and analyzing theoretical behaviour of the LEACH module, as well as the data derived from system test runs.
+
+\section{System Identification and Modeling}
+A thorough review of the dynamics of the system and their implementation into the test environment were made initially. Thereafter, verification tests were conducted; values derived from the generated model were compared with the test environment state outputs collected from before and after a discrete time step.
+
+\subsection{Design Decisions}
+Requirements engineering was deployed for every design step \cite{6146379}. Functional requirements were specified for each module based on features that had been deemed desirable during the literature review, see Chapter \ref{ch:LitReview}. Each module requirement was connected to test cases which had to be passed in order to advance.
+
+
+\noindent \textcolor{red}{TODO: Describe what tests has been done and how they were performed} \newline
+\textcolor{red}{TODO: What "numbers" were used in the testing, i.e what was the grid size, how many nodes, initial energy etc.}
+
+

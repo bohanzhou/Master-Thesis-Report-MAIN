@@ -1,0 +1,6 @@
+@ECHO OFF
+xelatex thesis.tex
+bibtex thesis.aux
+makeglossaries thesis
+xelatex thesis.tex
+xelatex thesis.tex

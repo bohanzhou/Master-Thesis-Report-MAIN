@@ -1,0 +1,27 @@
+\textit{In this chapter the future work regarding control of the mobile sink will be discussed. Also, recommendations for improving the WSN environment will be offered. \newline}
+\newline
+% WSN dynamics
+\noindent Currently, the WSN environment consists of a two dimensional grid with an arbitrary amount of nodes and a sink. The energy consumed by a node is solely modelled as a function of the distance \& data packets when data is being sent \& received. This implies that energy losses such as battery leakage and energy consumption due to corrupt data being resended is not modelled. Additionally, the energy consumption and the dynamics of the mobile sink were disregarded. If the WSN model is extended to a 3D space and the aforementioned WSN dynamics are included, it would give a better representation of the physical world. One simulating environment that can handle these dynamics is named OmNet++ \cite{varga2008overview}. \newline
+\newline
+% Hardware application
+\noindent This work has mainly focused on the software and thereby the hardware aspect was not taken into consideration. If this concept of energy management for WSN is to be applied, a further study needs to be conducted on the feasiblity of the algorithms. The study needs to investigate whether the current state of the art processors are capable of handling the computational load of the two algorithms in a timely manner. \newline
+\newline
+% Choice of parameters (RL)
+\noindent The DQN approach of controlling the sink has a limitation in that the agent could only select one action during one time segment. Since the best action could have been a combination of the current available actions, e.g. move sink and send less data packets simultaneously, it would be of interest to analyze the impact of this aspect. Another improvement of the RL approach would be to delve deeper into the design choices of the NN and learning parameters. By selecting more optimal parameters, the learning process could become more effective and thereby shortened. \newline
+
+% MPC
+\textcolor{red}{TODO: Write about future work regarding MPC} \newline
+
+\textcolor{red}{Write about the following topics in future work}
+\begin{itemize}
+\color{red}
+    \item (Include the dynamics of the sink)
+    \item Make the system handle moving nodes
+    \item (Implementation on hardware)
+    \item (Extend WSN system to work in 3D)
+    \item (More realistic conditions, e.g. resending of packets due to data being corrupted when sending/receiving requires more energy (OMNeT++?))
+    \item "Tuning" of the learning parameters, reward and MPC parameters 
+    \item ((RL) Controlling several actions at one time step, sink being able of moving in dynamic steps) 
+    \item (Energy consumption of sink)
+\end{itemize}
+

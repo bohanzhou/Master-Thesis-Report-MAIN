@@ -1,0 +1,118 @@
+\textit{This chapter will give an introduction into the field of Wireless Sensor Networks (WSNs) as well as the preliminary works that have been conducted in the field of study. The ethical considerations, the project outline, the problem statement and the research questions are also presented.}
+
+\section{Background}
+
+\noindent A hot topic in this day and age is the realization of the so called "Smart City", where wireless sensor networks (WSNs) are deployed in great amounts to monitor our living environments. The goal with these WSNs is to functionally and structurally improve the city’s sustainability and efficiency \cite{liu2017rf}. Since WSNs often contain many nodes, powering them on a large scale through the city power line or by batteries is not a feasible solution \cite{ruan2017energy}, \cite{ImportanceMitcheson2008energy}. Therefore, a general solution is to charge the nodes by self harvested energy. Due to that the self harvested energy is often inadequate, it is of great importance to achieve an efficient management on energy usage by proper clustering and control methods.\newline
+
+\noindent A common strategy for energy management  is continuously relocating the network's receiving base station in order to accommodate to the varying level, generation, and consumption, of energy among the nodes \cite{torghabeh2010mobile}, \cite{heinzelman2000energy}. With regards to this, this thesis work presents the development, design and comparison of two optimal control designs, one data driven and one model based. Both regulate the position of the base station as well as the packet rates (PRs) of the station's connected nodes. The objective of this regulation is to maximize the amount of total data aggregated in relation to the total energy available. In addition to this a novel clustering algorithm is also devised. The research is conducted in collaboration with Cybercom Group AB.
+
+\section{Earlier Works}
+\label{ss:EarlierWorks}
+\noindent The following works explores different aspects of the solution space. 
+
+\begin{enumerate}
+    \item In the year 2000, \textit{Wendi Rabiner Heinzelman et al.} proposed a new method for clustering wireless sensor nodes. The clustering method that was presented in this paper is called Low-Energy Adaptive Clustering Hierarchy (LEACH) and is based on electing sensor nodes as cluster heads (CHs) in a stochastic fashion. The role of a CH is to relay the data of its connected sub-nodes to the sink. After the CHs have been elected, the non-CH nodes connect to the CH that is closest to itself and the regular nodes communicate with the base station via the CH. It was shown that this clustering method improved the energy dissipation with a factor of 8. However, the LEACH clustering method does not take the state of charge (SoC) of the node into consideration when the CHs are elected \cite{heinzelman2000energy}.
+
+    \item In 2010, \textit{Nasrin Abazari Torghabeh et al.} proposed a relocating system for a mobile sink that took the SoC, the number of connected nodes and distance to the sink of each CH as inputs. The authors accomplished this by implementing a controller for the sink movement that deployed fuzzy logic to assign varying degrees of "critical statuses" to each CH based on the aforementioned inputs. The results showed an increase in network life time, energy of network and alive sensors in relation to network round \cite{torghabeh2010mobile}.
+    
+    \item In 2011, \textit{Xue Jun Li et al.} released an article about possible applications of model predictive control (MPC) in WSNs. It discussed several methods that MPC can be applied to improve network capacity. It was concluded that MPC is a promising candidate for solving optimization problems in WSN systems such as power control \cite{li2011application}.
+ 
+    \item In 2018, \textit{Fayçal Ait Aoudia et al.} proposed a novel energy management algorithm based on reinforcement learning (RLMan) which was deployed on every node in the wireless sensor node network to control its packet rate depending on current SoC. Unlike it's forerunners it only takes the current state of energy into account and not the current energy harvesting status. This allows the sensors to save energy which would otherwise go into the overhead accompanied with harvesting sampling. The method proved to be more efficient, with regards to network lifetime in relation to average packet rate, than all other methods tested against it \cite{RLbasedEHWSN_RLMAN}.
+\end{enumerate} 
+
+\noindent All the aforementioned works achieved promising results. However, the positioning of the sink with regards to its surrounding nodes as well as the PR of designated nodes are seldom controlled simultaneously. By implementing a controller capable of regulating both presents an opportunity for improved energy and data management.
+
+
+\section{Project Outline}
+\label{sec:prjoutline} 
+\noindent In order to regulate the LEACH based WSN with respect to aforementioned variables, model based design strategy is employed to develop an optimal controller. Meanwhile, another strategy independent of the explicit dynamic models is also attempted to design a data-driven controller. While encountering the energy and data management optimization problem in this project, the aim is to explore which controller is of better practical advantages. This accounting for control performance, computation overhead, developing cost, and so forth. \newline
+
+\noindent The LEACH algorithm, and its accompanying role-deciding equation presented in \cite{heinzelman2000energy}, do not take the SoC of the node into consideration when the CHs are elected. Consequently, the risk for a low energy node getting elected for the intense work as CH instead of one with higher SoC is always high \cite{heinzelman2000energy}. By broadening the LEACH equation with an introduced SoC dependency, the CH distribution could become more energy profitable.
+
+\section{Problem Statement}
+\label{ProbStatement}
+A model based control design process contains the following steps with their respective challenges \cite{MBCDP}.
+\begin{itemize}
+    \item \textbf{Creating a Plant Model} \\
+    A mathematical model of the system governing the relationship between inputs and outputs is to be determined and established.
+    \item \textbf{Controller Analysis \& Synthesis} \\
+    To control the system, feedback synthesis in the form of control strategies as functions of the current state(s) are to be formulated and solved \cite{OptSynthContr}.
+    \item \textbf{Simulating the Plant and Controller} \\
+    A virtual platform simulating all agents and behaviours within the scope is to be implemented in an object oriented environment. This is to verify the model by comparing system states after a discrete time step with and without control input. Finally the controllers are to be implemented, verified and validated in the simulation environment.
+    \item \textbf{Deploying the Controller}
+    The controller is implemented in the actual system and an iterative debugging process is carried out by analyzing results.
+\end{itemize}
+\noindent To achieve a practical energy dependent alternative of the LEACH equation mentioned in Section \ref{sec:prjoutline}, technical and functional requirements regarding probabilistic behaviour are to be stated. Ultimately the requirements are to be satisfied by analyzing the proposed mathematical expression. 
+The probabilistic equation shall be capable of producing a decision, directly influenced by its SoC, whether or not a node is to be a CH for each transmission round.\newline
+
+\noindent The objective of this thesis work is to put forward two new methods to control a mobile sink which controls the sink's positioning with regards to its surrounding nodes as well as the PRs of the CHs. The results are expected to show an increase in life time of the network compared to one not deploying a mobile sink.  
+
+\section{Research Questions}
+\label{MainRQ}
+\noindent The goal of designing and implementing the controllers is to minimize the energy consumption and maximize the data aggregation of the sensor nodes. Thereby, the lifetime of the WSN system is prolonged without compromising the quality of service. To realize the prescribed research goal, some research questions are posed concerning essential sections in controller design and evaluation. \newline
+
+\begin{enumerate}[label=Q\arabic*]
+    \item \textbf{How would an added SoC-dependency in the LEACH equation affect the performance of the WSN network?}\newline
+    Where performance is estimated by using the following technical indicators: 1. Energy consumed by the network [J]; 2. Network life time.
+    \item \textbf{For the model-based control in this project, how does the length of the optimization horizon affect the control performance?}\newline
+    Where performance is evaluated in terms of total amount of data received by the base station [bits], network life time, and amount of packets sent per Joule [bit/J].
+    Two points are of interest here. Firstly, the point of optimal trade off between control performance and computational load in order to explore the most suitable horizon length. Secondly, the point (or points) of failure.
+    \item \textbf{How is the $\epsilon$ value to be selected concerning exploration versus exploitation for the data driven optimal control?}\newline
+    Whilst the performance is evaluated in terms of amount of data received by the base station [bit], bits per Joule for the entire episode [bit/J], and network lifetime.
+    \item \textbf{Which controller in this project outperforms the other in what aspects of energy and data management?}\newline
+    The technical indexes adopted to estimate controller's performance are: 1. Amount of data received by the base station [bit], 2. Bits per Joule for the entire episode [bit/J], and network lifetime.
+\end{enumerate}
+
+
+\section{Division of Work}
+\noindent The work was divided such that both authors focused on different parts of the thesis work but still have knowledge in every area that was investigated. For the implementation phase, each author was responsible for one control system,i.e. MPC and RL control. See Table~\ref{tb:divWork} for a summary of the division of work. In this case the number indicates the responsibility where 1 is main responsibility and 2 is cooperative participation.       
+
+
+\begin{table}[h!]
+    \centering
+    \caption{Division of work}
+    \label{tb:divWork}
+    \begin{tabular}{ 
+     c % left aligned column
+     c % left aligned column
+ *{2}{S[table-format=4.0]} % three columns with numeric data       
+}
+        \toprule
+        \textit{Task} & \textit{Axel} & \textit{Bohan} \\  
+        \midrule
+        Background research & 1 & 1\\ 
+        Simulation environment & 1 & 1 \\  
+        LEACH broadening & 1 & 2 \\ 
+        MPC & 1 & 2 \\  
+        RL controller & 2 & 1 \\ 
+        Comparison study & 1 & 1 \\ 
+        Report writing & 2 & 1 \\ 
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+
+
+
+\section{Ethical Considerations}
+\noindent Due to the reason that this project will only involve low-power small components dealing with low level sensor data, one can assume that this project will not involve any ethical issues regarding a direct risk to human health, privacy breach or property destruction.
+\newline\newline
+An example of plausible ethical issues that may erupt is that during the research phase, not all possible control methods with their corresponding best practical application will be applied and tested which could lead to a case of unintentional harmful data selection \cite{dataSelection}. This might lead to a faulty conclusion in which a control method is claimed to be the optimal when perhaps not being it. This may propagate into a system with poor practical application and ultimately system failures which could result in casualties. In this instance the ethical dilemma would amount to be who is liable for the damage \cite{epstein1997case}. The straight-forward way of dealing with the expected issue case mentioned above would be to make sure to evaluate the control methods relative to each other, thereby reaching a result which still presents the control method that is optimal within the study.
+\newline \newline
+\noindent In this thesis work a literature study has been performed and in the future figures and tables from other authors might be used in the report. In order to separate what material provided by the thesis authors and what work is done by others, it is important to cite the source if it is not the original work of the thesis authors.
+\newline \newline 
+\noindent With regards to data transparency, if not all result data is shown in the results chapter they will be included in the Appendix together with other relevant information. This way the reader of the thesis can draw their own conclusions from the available data. 
+
+\section{Delimitations}
+It would be of interest to look into network protocol dynamics such as energy loss due to re-sending messages and whether the CHs data buffer are large enough to process and compress the data. Nonetheless, the scope of this work will not involve any communication protocols or loss of data packets. Consequently, the testing of the controllers and the clustering protocols will not be done on actual hardware.\newline
+
+\noindent The work was limited by not taking the power consumption or the dynamics of the mobile sink into account and only a single sink was considered for this system. In this thesis work the "data" sent during transmission were simply represented by variables that were updated when a message function was successful. Finally, the system was not simulated in real time, but in a discrete manner where control \& state gets updated when the environment \& controller had finished calculating.    
+\newline
+The movement of the sink was simplified by constraining only its step size, i.e. the movement dynamics themselves was seen as non existent. 
+
+
+
+\section{Report Outline}
+% Complete this section when we are almost finished with report.
+This report will have the following structure...\newline
+\textcolor{red}{TODO: Update Project Outline once the report is close to being finished}
