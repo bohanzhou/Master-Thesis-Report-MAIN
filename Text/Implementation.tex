@@ -101,7 +101,7 @@ The following definitions were formed
 $C$ works by gradually nullifying $f$ towards the end of the cycle. For example, if $h_r = 1$ and $r = \frac{1}{P}-1$ (the last round index of the cycle), we have that
 \begin{align}
     C = \frac{1}{f} \\
-    f\cdot R = f\cdot C \cdot \frac{P}{1-P(r\,mod\frac{1}{P})} = T_{LEACH}\\
+    f\cdot R = f\cdot C \cdot \frac{P}{1-P(r\,mod\frac{1}{P})} = T_{LEACH}
 \end{align}
 
 thus making sure that $T\geq1$ is guaranteed for the remaining nodes at the last round. However, a value of $R\geq1$ is not desired for all nodes at the final round; if each node was guaranteed to become a CH during each cycle, the $SoC$-prioritization would serve no purpose. Therefore, the factor $h_r$ was introduced to control the impact of $R$ so as to keep $T_{BLEACH}(\frac{1}{P})$ below 1 for nodes with $SoC$ below a certain value.\newline
